@@ -45,6 +45,9 @@ def callback():
     except InvalidSignatureError:
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
+    except Exception as e:
+        print("Error occurred while handling webhook: ", e)
+        abort(500)
 
     return 'OK'
 
@@ -56,8 +59,14 @@ def handle_message(event):
     if event.message.text == '有哪些狗':
         line_bot_api.reply_message(
             event.reply_token,
-            carousel_template
-        )    
+            carousel_template1
+        )
+
+    elif event.message.text == '關於中原動服社':    
+        line_bot_api.reply_message(
+            event.reply_token,
+            carousel_template2
+        )     
 
     elif event.message.text == '猜猜什麼狗':
         message = TemplateSendMessage(
@@ -110,7 +119,7 @@ def handle_image_message(event):
         shutil.rmtree('LineExport')
     # 帶入參數 執行 detect    
     result = subprocess.run(['python', 'detect.py', '--weights', 'best300.pt', '--conf-thres', '0.5', '--img-size', '416', '--source', 'temp.jpg', '--project', './', '--name', 'LineExport'],text=True)
-    # os.remove('temp.jpg')
+    #os.remove('temp.jpg')
 
     print("==========================")
     print(result)#自己看爽用
@@ -120,11 +129,11 @@ def handle_image_message(event):
     Dog_CH = {
         'Black':'小黑',
         'Bear':'小熊',
-        'Ben':'小斑',   #
+        'Ben':'小斑',
         'Qbi':'Q比',
-        'Sabai':'莎白', #
-        'Tudo':'土豆',  #
-        'Lele':'樂樂'   #
+        'Sabai':'莎白',
+        'Tudo':'土豆',
+        'Lele':'樂樂'
     }
     
 
@@ -154,12 +163,12 @@ def handle_image_message(event):
 
             
                 #刪除殘留檔 可刪可不刪
-                # os.remove('result.txt')
-                shutil.rmtree('LineExport')
+                #os.remove('result.txt')
+                #shutil.rmtree('LineExport')
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='沒有偵測到狗狗，請重新上傳正確圖片'))
             
-    shutil.rmtree('LineExport')
+    # shutil.rmtree('LineExport')
 
 
 
@@ -175,9 +184,9 @@ def upload_image_to_imgur(image_path):
 #--------------------------------------------------------------------------------------
 
 
-#--移動圖test
-carousel_template = TemplateSendMessage(
-    alt_text='Carousel Template',
+#--移動圖test (Carousel template message)      ##########################################################
+carousel_template1 = TemplateSendMessage(
+    alt_text='Carousel Template 1',
     template=CarouselTemplate(
         columns=[
             CarouselColumn(
@@ -284,10 +293,68 @@ carousel_template = TemplateSendMessage(
                     }
                 ]
             ),
+
         ]
     )
 )
+   
 
+                                              ######動服社FB/IG/蝦皮(?)連結##################
+carousel_template2 = TemplateSendMessage(
+    alt_text='Carousel Template 2',
+    template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/pKUhiGz.jpg',
+                title='Facebook',
+                text='一群愛動物、想為流浪動物盡一份心力的大學生們所組成的社團。',              
+                actions=[
+                    {
+                        "type": "uri",
+                        "label": "前往動服社的FB",
+                        "uri": "https://www.facebook.com/cycucatdog/?locale=zh_TW"
+                    }
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/Zaq8Owr.jpg',
+                title='Instagram',
+                text='社團狗狗日常分享、社團及志工活動訊息。可愛的社團狗狗開放認養中，若發現需要幫助的動物請盡速與我們聯絡。',
+                actions=[
+                    {
+                        "type": "uri",
+                        "label": "前往動服社的IG",
+                        "uri": "https://www.instagram.com/cycucatdog/"
+                    }
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/aEe8agw.jpg',
+                title='Shopee',
+                text='本義賣商品之所得將全額分配至中原大學內每隻浪浪的食、藥支出，謝謝您們的愛心。',
+                actions=[
+                    {
+                        "type": "uri",
+                        "label": "前往動服社的義賣區",
+                        "uri": "https://shopee.tw/enily871127"
+                    }
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/LwfWhq1.jpg',
+                title='社團法人台灣之心愛護動物協會',
+                text='您也想要帶流浪貓狗去結紮嗎？請來電協會申請，即可完成紮浪浪計畫的申請手續、馬上使用本計畫的補助名額喔！',
+                actions=[
+                    {
+                        "type": "uri",
+                        "label": "前往台灣之心愛護動物協會",
+                        "uri": "https://hotac.org.tw/content-tnr_projectJoin"
+                    }
+                ]
+            ),
+        ]
+    )
+)
 
 
 if __name__ == "__main__":
