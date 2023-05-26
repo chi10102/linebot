@@ -16,6 +16,28 @@ from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMes
     QuickReplyButton, PostbackAction)
 from linebot.exceptions import LineBotApiError
 
+# ==========================================================================================
+app = Flask(__name__, static_url_path='/static')        
+UPLOAD_FOLDER = 'static'
+ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+line_bot_api = LineBotApi(config.get('line-bot', 'channel_access_token'))
+handler = WebhookHandler(config.get('line-bot', 'channel_secret'))
+my_line_id = config.get('line-bot', 'my_line_id')
+end_point = config.get('line-bot', 'end_point')
+line_login_id = config.get('line-bot', 'line_login_id')
+line_login_secret = config.get('line-bot', 'line_login_secret')
+my_phone = config.get('line-bot', 'my_phone')
+HEADER = {
+    'Content-type': 'application/json',
+    'Authorization': F'Bearer {config.get("line-bot", "channel_access_token")}'
+}
+
+# ==========================================================================================
+
 #我把資料都寫在env.json裡 記得進去裡面修改成自己要套用的Linebot API
 with open('env.json') as f:
     env = json.load(f)
@@ -52,13 +74,124 @@ def callback():
 
     return 'OK'
 
+# ==========================================================================================
+
+@app.route("/", methods=['POST', 'GET'])
+def index():
+    if request.method == 'GET':
+        return 'ok'
+    body = request.json
+    events = body["events"]
+    if request.method == 'POST' and len(events) == 0:
+        return 'ok'
+    print(body)
+    if "replyToken" in events[0]:
+        payload = dict()
+        replyToken = events[0]["replyToken"]
+        payload["replyToken"] = replyToken
+        if events[0]["type"] == "message":
+            if events[0]["message"]["type"] == "text":
+                text = events[0]["message"]["text"]
+
+                if text == "我的名字":
+                    payload["messages"] = [getNameEmojiMessage()]
+                elif text == "出去玩囉":
+                    payload["messages"] = [getPlayStickerMessage()]
+                elif text == "台北101":                                 ### 台北101圖片 ###
+                    payload["messages"] = [getTaipei101ImageMessage(),
+                                           getTaipei101LocationMessage(),
+                                           getMRTVideoMessage()]
+                elif text == "quoda":
+                    payload["messages"] = [
+                            {
+                                "type": "text",
+                                "text": getTotalSentMessageCount()
+                            }
+                        ]   
+                elif text == "今日確診人數":
+                    payload["messages"] = [
+                            {
+                                "type": "text",
+                                "text": getTodayCovid19Message()
+                            }
+                        ]
+                elif text == "主選單":
+                    payload["messages"] = [
+                            {
+                                "type": "template",
+                                "altText": "This is a buttons template",
+                                "template": {
+                                  "type": "buttons",
+                                  "title": "Menu",
+                                  "text": "Please select",
+                                  "actions": [
+                                      {
+                                        "type": "message",
+                                        "label": "我的名字",
+                                        "text": "我的名字"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "label": "今日確診人數",
+                                        "text": "今日確診人數"
+                                      },
+                                      {
+                                        "type": "uri",
+                                        "label": "聯絡我",
+                                        "uri": f"tel:{my_phone}"
+                                      }
+                                  ]
+                              }
+                            }
+                        ]
+                else:
+                    payload["messages"] = [
+                            {
+                                "type": "text",
+                                "text": text
+                            }
+                        ]
+                replyMessage(payload)
+            elif events[0]["message"]["type"] == "location":
+                title = events[0]["message"]["title"]
+                latitude = events[0]["message"]["latitude"]
+                longitude = events[0]["message"]["longitude"]
+                payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
+                replyMessage(payload)
+        elif events[0]["type"] == "postback":
+            if "params" in events[0]["postback"]:
+                reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
+                payload["messages"] = [
+                        {
+                            "type": "text",
+                            "text": F"已完成預約於{reservedTime}的叫車服務"
+                        }
+                    ]
+                replyMessage(payload)
+            else:
+                data = json.loads(events[0]["postback"]["data"])
+                action = data["action"]
+                if action == "get_near":
+                    data["action"] = "get_detail"
+                    payload["messages"] = [getCarouselMessage(data)]
+                elif action == "get_detail":
+                    del data["action"]
+                    payload["messages"] = [getTaipei101ImageMessage(),
+                                           getTaipei101LocationMessage(),
+                                           getMRTVideoMessage(),
+                                           getCallCarMessage(data)]
+                replyMessage(payload)
+
+    return 'OK'
+
+# ==========================================================================================
 
 #根據訊息內容  做處理
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
     if event.message.text == '所有狗狗介紹':
-        with open('all_dogs_02.json',encoding='utf-8') as d:     ##### all_dogs_02.json##################
+        with open('all_dogs_0525.json',encoding='utf-8') as d:     ##### all_dogs_02.json###########
             test = json.load(d)
         line_bot_api.reply_message(
         event.reply_token,FlexSendMessage('有哪些狗',test)
@@ -123,6 +256,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, message)
         except LineBotApiError as e:
             print('發生 LineBotApiError: ', e)
+
 
 #大概運作流程=>
 #-> 當bot接收到圖片
@@ -213,183 +347,7 @@ def upload_image_to_imgur(image_path):
 
 
 
-#--移動圖test (Carousel template message)      ##########所有狗狗介紹#####################
-# carousel_template1 = TemplateSendMessage(
-#     alt_text='Carousel Template 1',
-#     template=CarouselTemplate(
-#         columns=[
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/Yx8WJFz.jpg',
-#                 title='1-我叫小黑',
-#                 text='特徵：全黑，胖呼呼',              
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：食量大，喜歡挖洞和被拍屁屁\
-#                                 個性：傲嬌屬性，其傲的屬性>嬌\
-#                                 注意事項：不親狗"
-#                     }
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/gKNThaq.jpg',
-#                 title='2-我叫小熊',
-#                 text='特徵：尾巴短短',
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：會發出聲音的玩具\
-#                                 個性：活潑直率，愛玩耍，相當親人\
-#                                 注意事項：看見其他狗狗會太激動，想撲上去，會護食，怕孤單\
-#                                 "
-#                     }
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/h0Q2OJd.jpg',
-#                 title='3-我叫小斑',
-#                 text='特徵：毛很柔順，走路像螃蟹歪歪的',
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：愛睡覺、喜歡純肉的零食\
-#                                 個性：隨和友善，喜歡撒嬌\
-#                                 注意事項：不親狗、不喜歡各種快速移動的東西、不喜歡長者\
-#                                 "
-#                     }
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/GAEWDKy.jpg',
-#                 title='4-我叫Q比',
-#                 text='特徵：耳朵一豎一垂',
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：喜歡啃樹皮，挖洞和愛玩躲貓貓給人家找，還有喜歡淋雨的感覺\
-#                                 個性：神出鬼沒，很有個性的小夥子\
-#                                 注意事項：年紀很大，會護食\
-#                                 "
-#                     }
-#                 ]
-#             ),
-#             CarouselColumn( 
-#                 thumbnail_image_url='https://imgur.com/plSR5h0.jpg',
-#                 title='5-我叫莎白',
-#                 text='特徵：白襪子，胸前嘴邊有白毛',
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：貪吃、愛搗蛋、挖土\
-#                                 個性：調皮，很多奇葩的舉動\
-#                                 注意事項：不親狗、怕球、會亂吃東西、不喜歡高大的男性\
-#                                 "
-#                     }
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/G2CDzLE.jpg',
-#                 title='6-我叫土豆',
-#                 text='特徵：柴犬尾巴',
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：貪吃、喜歡滾草地、握手王\
-#                                 個性：喜歡討摸，握手王\
-#                                 注意事項：不親狗、不喜歡各種快速移動的東西、不喜歡長者\
-#                                 "
-#                     }
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://i.imgur.com/vPykFAz.jpg',
-#                 title='7-我叫樂樂',
-#                 text='特徵：肉嘟嘟，臉軟得像麻糬，尾巴很短',
-#                 actions=[
-#                     {
-#                         "type": "message",
-#                         "label": "點我看介紹",
-#                         "text": "習性喜好：貪吃，食量大，狗舍唯一會玩球的毛小孩\
-#                                 個性：害羞怕生，但熟了就會很真心對你微笑，跟你親近\
-#                                 注意事項：有人群恐懼症和嚴重怕生，所以一開始接近他要慢慢試水溫建立信任，不然會嚇到牠呦\
-#                                 "
-#                     }
-#                 ]
-#             ),
 
-#         ]
-#     )
-# )
-   
-
-                                              ##########關於我們(FB/IG/蝦皮...)##################      
-# carousel_template2 = TemplateSendMessage(
-#     alt_text='Carousel Template 2',
-#     template=CarouselTemplate(
-#         columns=[
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/Z3R97BG.jpg',
-#                 title='Facebook',
-#                 text='一群愛動物、想為流浪動物盡一份心力的大學生們所組成的社團。',              
-#                 actions=[
-#                     URIAction(label='前往動服社的FB', uri='https://www.facebook.com/cycucatdog/?locale=zh_TW'),
-#                     URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/V2hhTIw.jpg',
-#                 title='Instagram',
-#                 text='社團狗狗日常分享、社團及志工活動訊息。可愛的社團狗狗開放認養中，若發現需要幫助的動物請盡速與我們聯絡。',
-#                 actions=[
-#                     URIAction(label='前往動服社的IG', uri='https://www.instagram.com/cycucatdog'),
-#                     URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/SCVGhYa.jpg',
-#                 title='最新活動',
-#                 text='歡迎社員們踴躍參加，到前線為動保議題付出，和我們一起在校內照顧狗狗，非社員也隨時歡迎入社～快行動起來吧！',
-#                 actions=[
-#                     URIAction(label='最新活動公告', uri='https://www.instagram.com/p/CrsI9bsLjaM'),
-#                     URIAction(label='活動表單', uri='https://linkfly.to/30906q4vJGW')                 
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/fWUI7WQ.jpg',
-#                 title='蝦皮賣場',
-#                 text='本義賣商品之所得將全額分配至中原大學內每隻浪浪的食、藥支出，謝謝您們的愛心。',
-#                 actions=[
-#                     URIAction(label='前往義賣區', uri='https://shopee.tw/enily871127'),
-#                     URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/bd8QZkd.jpg',
-#                 title='PCT好侶',
-#                 text='PCT好侶與學生社團長期合作，希望能盡一份心力，減輕學生們的負擔，讓他們能有更多的時間幫助毛孩子們。',
-#                 actions=[
-#                     URIAction(label='前往PCT好侶', uri='https://www.perfectcompanion.com.tw/tw/news/charity/67'),
-#                     URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
-#                 ]
-#             ),
-#             CarouselColumn(
-#                 thumbnail_image_url='https://imgur.com/9CbPvBl.jpg',
-#                 title='社團法人台灣之心愛護動物協會',
-#                 text='您也想要帶流浪貓狗去結紮嗎？請來電協會申請，即可完成紮浪浪計畫的申請手續、馬上使用本計畫的補助名額喔！',
-#                 actions=[
-#                     URIAction(label='前往台灣之心愛護動物協會', uri='https://hotac.org.tw/content-tnr_projectJoin'),
-#                     URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
-#                 ]
-#             )
-#         ]
-#     )
-# )
 
 
 
