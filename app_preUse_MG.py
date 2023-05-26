@@ -7,7 +7,7 @@ import requests
 from flask import Flask, request, abort
 import subprocess
 import shutil
-
+import my_select
 
 
 from linebot import (LineBotApi, WebhookHandler)
@@ -15,6 +15,488 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, URITemplateAction, CarouselTemplate, CarouselColumn, URIAction, FlexSendMessage, CameraAction, CameraRollAction, QuickReply,
     QuickReplyButton, PostbackAction)
 from linebot.exceptions import LineBotApiError
+
+            #############################################################################
+if device_id == 'nano':
+    location = "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+elif device_id == 'esp':
+    location = "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+
+json_data={
+  "type": "carousel",
+  "contents": [
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/Yx8WJFz.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "1-小黑",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：全黑，胖呼呼",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/Yx8WJFz.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": location
+            #   "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+    
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/gKNThaq.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "2-小熊",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：尾巴短短",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/gKNThaq.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/h0Q2OJd.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "3-小斑",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：毛很柔順，走路像螃蟹歪歪的",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/h0Q2OJd.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/GAEWDKy.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "4-Ｑ比",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：耳朵一豎一垂",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/GAEWDKy.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/plSR5h0.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "5-莎白",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：白襪子，胸前嘴邊有白毛",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/plSR5h0.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/G2CDzLE.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "6-土豆",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：柴犬尾巴",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/G2CDzLE.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/vPykFAz.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "7-樂樂",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：肉嘟嘟，臉軟得像麻糬，尾巴很短",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我是誰",
+              "uri": "https://imgur.com/vPykFAz.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    }
+  ]
+}
+
+
 
 #我把資料都寫在env.json裡 記得進去裡面修改成自己要套用的Linebot API
 with open('env.json') as f:
@@ -57,25 +539,24 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
-    if event.message.text == '所有狗狗介紹':
-        with open('all_dogs_02.json',encoding='utf-8') as d:     ##### all_dogs_02.json##################
+    if event.message.text == '所有狗狗':
+        # line_bot_api.reply_message(
+        #     event.reply_token,
+        #     carousel_template1
+        # )
+        with open('all_dogs_01.json',encoding='utf-8') as d:     # all_dogs.json##################
             test = json.load(d)
         line_bot_api.reply_message(
         event.reply_token,FlexSendMessage('有哪些狗',test)
-        )        
+        )
+        
 
     elif event.message.text == '關於中原動服社':
-        with open('about_01.json',encoding='utf-8') as d:       ##### about_01.json##################
+        with open('about_01.json',encoding='utf-8') as d:
             test = json.load(d)
         line_bot_api.reply_message(
         event.reply_token,FlexSendMessage('中原動服社',test)
         )  
-
-    # if event.message.text == '所有狗狗介紹':
-    #     line_bot_api.reply_message(
-    #         event.reply_token,
-    #         carousel_template1
-    #     )
 
     # elif event.message.text == '關於中原動服社':    
     #     line_bot_api.reply_message(
@@ -83,27 +564,26 @@ def handle_message(event):
     #         carousel_template2
     #     )     
 
-    # elif event.message.text == '這隻狗叫什麼名字':
-    #     message = TemplateSendMessage(
-    #         alt_text='Buttons template',
-    #         template=ButtonsTemplate(
-    #             thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
-    #             # imageBackgroundColor = "#deffe5",
-    #             title='選擇一個動作',
-    #             text='操作說明：使用者可透過相機拍照或從相簿選取照片，傳送至系統進行辨識。',
-    #             actions=[
-    #                 URITemplateAction(
-    #                     label='開啟相機',
-    #                     uri='line://nv/camera/'
-    #                 ),
-    #                 URITemplateAction(
-    #                     label='選取相片',
-    #                     uri='line://nv/cameraRoll/single'
-    #                 )
-    #             ]
-    #         )
-    #     )
-    elif event.message.text == '這隻狗叫什麼名字':    
+    elif event.message.text == '猜猜我是誰':
+        # message = TemplateSendMessage(
+        #     alt_text='Buttons template',
+        #     template=ButtonsTemplate(
+        #         thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
+        #         # imageBackgroundColor = "#deffe5",
+        #         title='選擇一個動作',
+        #         text='操作說明：使用者可透過相機拍照或從相簿選取照片，傳送至系統進行辨識。',
+        #         actions=[
+        #             URITemplateAction(
+        #                 label='開啟相機',
+        #                 uri='line://nv/camera/'
+        #             ),
+        #             URITemplateAction(
+        #                 label='選取相片',
+        #                 uri='line://nv/cameraRoll/single'
+        #             )
+        #         ]
+        #     )
+        # )
         message=TextSendMessage(
             text="操作說明：\
                                                 請從下面按鈕選擇開啟相機拍照或從相簿選取照片，傳送至系統進行辨識",
@@ -123,6 +603,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, message)
         except LineBotApiError as e:
             print('發生 LineBotApiError: ', e)
+
 
 #大概運作流程=>
 #-> 當bot接收到圖片
