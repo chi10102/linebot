@@ -12,7 +12,7 @@ import shutil
 
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
-from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, URITemplateAction, CarouselTemplate, CarouselColumn)
+from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, URITemplateAction, CarouselTemplate, CarouselColumn, URIAction)
 from linebot.exceptions import LineBotApiError
 
 #我把資料都寫在env.json裡 記得進去裡面修改成自己要套用的Linebot API
@@ -72,7 +72,7 @@ def handle_message(event):
         message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://imgur.com/JJ4Unf9.jpg',#可改
+                thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
                 # imageBackgroundColor = "#deffe5",
                 title='選擇一個動作',
                 text='你想要...',
@@ -190,7 +190,7 @@ carousel_template1 = TemplateSendMessage(
     template=CarouselTemplate(
         columns=[
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/KWg50kl.jpg',
+                thumbnail_image_url='https://imgur.com/Yx8WJFz.jpg',
                 title='1-我叫小黑',
                 text='特徵：全黑，胖呼呼',              
                 actions=[
@@ -249,7 +249,7 @@ carousel_template1 = TemplateSendMessage(
                 ]
             ),
             CarouselColumn( 
-                thumbnail_image_url='https://imgur.com/lKFeE77.jpg',
+                thumbnail_image_url='https://imgur.com/plSR5h0.jpg',
                 title='5-我叫莎白',
                 text='特徵：白襪子，胸前嘴邊有白毛',
                 actions=[
@@ -264,7 +264,7 @@ carousel_template1 = TemplateSendMessage(
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://i.imgur.com/qcoWJyL.jpg',
+                thumbnail_image_url='https://imgur.com/G2CDzLE.jpg',
                 title='6-我叫土豆',
                 text='特徵：柴犬尾巴',
                 actions=[
@@ -305,7 +305,7 @@ carousel_template2 = TemplateSendMessage(
     template=CarouselTemplate(
         columns=[
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/pKUhiGz.jpg',
+                thumbnail_image_url='https://imgur.com/Z3R97BG.jpg',
                 title='Facebook',
                 text='一群愛動物、想為流浪動物盡一份心力的大學生們所組成的社團。',              
                 actions=[
@@ -317,7 +317,7 @@ carousel_template2 = TemplateSendMessage(
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/Zaq8Owr.jpg',
+                thumbnail_image_url='https://imgur.com/V2hhTIw.jpg',
                 title='Instagram',
                 text='社團狗狗日常分享、社團及志工活動訊息。可愛的社團狗狗開放認養中，若發現需要幫助的動物請盡速與我們聯絡。',
                 actions=[
@@ -329,8 +329,17 @@ carousel_template2 = TemplateSendMessage(
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/aEe8agw.jpg',
-                title='Shopee',
+                thumbnail_image_url='https://imgur.com/SCVGhYa.jpg',
+                title='最新活動',
+                text='歡迎社員們踴躍參加，到前線為動保議題付出，和我們一起在校內照顧狗狗，非社員也隨時歡迎入社～快行動起來吧！',
+                actions=[
+                    URIAction(label='連結1', uri='https://www.instagram.com/p/CrsI9bsLjaM'),
+                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')                  
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/fWUI7WQ.jpg',
+                title='蝦皮購物',
                 text='本義賣商品之所得將全額分配至中原大學內每隻浪浪的食、藥支出，謝謝您們的愛心。',
                 actions=[
                     {
@@ -341,7 +350,19 @@ carousel_template2 = TemplateSendMessage(
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/LwfWhq1.jpg',
+                thumbnail_image_url='https://imgur.com/bd8QZkd.jpg',
+                title='PCT好侶',
+                text='PCT好侶與學生社團長期合作，希望能將盡一份心力，減輕學生們的負擔，讓他們能有更多的時間幫助毛孩子們。',
+                actions=[
+                    {
+                        "type": "uri",
+                        "label": "前往PCT好侶",
+                        "uri": "https://www.perfectcompanion.com.tw/tw/news/charity/67"
+                    }
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/9CbPvBl.jpg',
                 title='社團法人台灣之心愛護動物協會',
                 text='您也想要帶流浪貓狗去結紮嗎？請來電協會申請，即可完成紮浪浪計畫的申請手續、馬上使用本計畫的補助名額喔！',
                 actions=[
