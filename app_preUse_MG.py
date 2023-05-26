@@ -12,7 +12,8 @@ import shutil
 
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
-from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, URITemplateAction, CarouselTemplate, CarouselColumn, URIAction)
+from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, URITemplateAction, CarouselTemplate, CarouselColumn, URIAction, FlexSendMessage, CameraAction, CameraRollAction, QuickReply,
+    QuickReplyButton)
 from linebot.exceptions import LineBotApiError
 
 #我把資料都寫在env.json裡 記得進去裡面修改成自己要套用的Linebot API
@@ -62,6 +63,13 @@ def handle_message(event):
             carousel_template1
         )
 
+    elif event.message.text == '哈囉':
+        with open('test.json') as d:
+            test = json.load(d)
+        line_bot_api.reply_message(
+        event.reply_token,FlexSendMessage('hello',test)
+        )  
+
     elif event.message.text == '關於中原動服社':    
         line_bot_api.reply_message(
             event.reply_token,
@@ -69,22 +77,35 @@ def handle_message(event):
         )     
 
     elif event.message.text == '猜猜什麼狗':
-        message = TemplateSendMessage(
-            alt_text='Buttons template',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
-                # imageBackgroundColor = "#deffe5",
-                title='選擇一個動作',
-                text='你想要...',
-                actions=[
-                    URITemplateAction(
-                        label='開啟相機',
-                        uri='line://nv/camera/'
-                    ),
-                    URITemplateAction(
-                        label='選取相片',
-                        uri='line://nv/cameraRoll/single'
-                    )
+        # message = TemplateSendMessage(
+        #     alt_text='Buttons template',
+        #     template=ButtonsTemplate(
+        #         thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
+        #         # imageBackgroundColor = "#deffe5",
+        #         title='選擇一個動作',
+        #         text='操作說明：使用者可透過相機拍照或從相簿選取照片，傳送至系統進行辨識。',
+        #         actions=[
+        #             URITemplateAction(
+        #                 label='開啟相機',
+        #                 uri='line://nv/camera/'
+        #             ),
+        #             URITemplateAction(
+        #                 label='選取相片',
+        #                 uri='line://nv/cameraRoll/single'
+        #             )
+        #         ]
+        #     )
+        # )
+        message=TextSendMessage(
+            text="操作說明：請從下面按鈕選擇開啟相機拍照或從相簿選取照片，傳送至系統進行辨識。",
+            quick_reply=QuickReply(
+                items=[                    
+                    QuickReplyButton(
+                        action=CameraAction(label="拍照")
+                        ),
+                    QuickReplyButton(
+                        action=CameraRollAction(label="相簿")
+                        )
                 ]
             )
         )
@@ -184,7 +205,7 @@ def upload_image_to_imgur(image_path):
 #--------------------------------------------------------------------------------------
 
 
-#--移動圖test (Carousel template message)      ##########################################################
+#--移動圖test (Carousel template message)      #################所有狗狗介紹#####################
 carousel_template1 = TemplateSendMessage(
     alt_text='Carousel Template 1',
     template=CarouselTemplate(
@@ -299,7 +320,7 @@ carousel_template1 = TemplateSendMessage(
 )
    
 
-                                              ######動服社FB/IG/蝦皮(?)連結##################
+                                              ###########關於我們(FB/IG/蝦皮...)##################      
 carousel_template2 = TemplateSendMessage(
     alt_text='Carousel Template 2',
     template=CarouselTemplate(
@@ -309,11 +330,8 @@ carousel_template2 = TemplateSendMessage(
                 title='Facebook',
                 text='一群愛動物、想為流浪動物盡一份心力的大學生們所組成的社團。',              
                 actions=[
-                    {
-                        "type": "uri",
-                        "label": "前往動服社的FB",
-                        "uri": "https://www.facebook.com/cycucatdog/?locale=zh_TW"
-                    }
+                    URIAction(label='前往動服社的FB', uri='https://www.facebook.com/cycucatdog/?locale=zh_TW'),
+                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
                 ]
             ),
             CarouselColumn(
@@ -321,11 +339,8 @@ carousel_template2 = TemplateSendMessage(
                 title='Instagram',
                 text='社團狗狗日常分享、社團及志工活動訊息。可愛的社團狗狗開放認養中，若發現需要幫助的動物請盡速與我們聯絡。',
                 actions=[
-                    {
-                        "type": "uri",
-                        "label": "前往動服社的IG",
-                        "uri": "https://www.instagram.com/cycucatdog/"
-                    }
+                    URIAction(label='前往動服社的IG', uri='https://www.instagram.com/cycucatdog'),
+                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
                 ]
             ),
             CarouselColumn(
@@ -333,20 +348,17 @@ carousel_template2 = TemplateSendMessage(
                 title='最新活動',
                 text='歡迎社員們踴躍參加，到前線為動保議題付出，和我們一起在校內照顧狗狗，非社員也隨時歡迎入社～快行動起來吧！',
                 actions=[
-                    URIAction(label='連結1', uri='https://www.instagram.com/p/CrsI9bsLjaM'),
-                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')                  
+                    URIAction(label='最新活動公告', uri='https://www.instagram.com/p/CrsI9bsLjaM'),
+                    URIAction(label='活動表單', uri='https://linkfly.to/30906q4vJGW')                 
                 ]
             ),
             CarouselColumn(
                 thumbnail_image_url='https://imgur.com/fWUI7WQ.jpg',
-                title='蝦皮購物',
+                title='蝦皮賣場',
                 text='本義賣商品之所得將全額分配至中原大學內每隻浪浪的食、藥支出，謝謝您們的愛心。',
                 actions=[
-                    {
-                        "type": "uri",
-                        "label": "前往動服社的義賣區",
-                        "uri": "https://shopee.tw/enily871127"
-                    }
+                    URIAction(label='前往義賣區', uri='https://shopee.tw/enily871127'),
+                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
                 ]
             ),
             CarouselColumn(
@@ -354,11 +366,8 @@ carousel_template2 = TemplateSendMessage(
                 title='PCT好侶',
                 text='PCT好侶與學生社團長期合作，希望能將盡一份心力，減輕學生們的負擔，讓他們能有更多的時間幫助毛孩子們。',
                 actions=[
-                    {
-                        "type": "uri",
-                        "label": "前往PCT好侶",
-                        "uri": "https://www.perfectcompanion.com.tw/tw/news/charity/67"
-                    }
+                    URIAction(label='前往PCT好侶', uri='https://www.perfectcompanion.com.tw/tw/news/charity/67'),
+                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
                 ]
             ),
             CarouselColumn(
@@ -366,16 +375,14 @@ carousel_template2 = TemplateSendMessage(
                 title='社團法人台灣之心愛護動物協會',
                 text='您也想要帶流浪貓狗去結紮嗎？請來電協會申請，即可完成紮浪浪計畫的申請手續、馬上使用本計畫的補助名額喔！',
                 actions=[
-                    {
-                        "type": "uri",
-                        "label": "前往台灣之心愛護動物協會",
-                        "uri": "https://hotac.org.tw/content-tnr_projectJoin"
-                    }
+                    URIAction(label='前往台灣之心愛護動物協會', uri='https://hotac.org.tw/content-tnr_projectJoin'),
+                    URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
                 ]
-            ),
+            )
         ]
     )
 )
+
 
 
 if __name__ == "__main__":
