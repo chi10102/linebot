@@ -57,25 +57,25 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
-    if event.message.text == '有哪些狗':
-        line_bot_api.reply_message(
-            event.reply_token,
-            carousel_template1
-        )
-
-        # with open('about_01.json',encoding='utf-8') as d:     ### 暫定all dogs.json##################
-        #     test = json.load(d)
-        # line_bot_api.reply_message(
-        # event.reply_token,FlexSendMessage('hello',test)
-        # )
-        
-
-    elif event.message.text == '關於中原動服社':
-        with open('about_01.json',encoding='utf-8') as d:
+    if event.message.text == '所有狗狗介紹':
+        with open('all_dogs_02.json',encoding='utf-8') as d:     ##### all_dogs_02.json##################
             test = json.load(d)
         line_bot_api.reply_message(
-        event.reply_token,FlexSendMessage('hello',test)
+        event.reply_token,FlexSendMessage('有哪些狗',test)
+        )        
+
+    elif event.message.text == '關於中原動服社':
+        with open('about_01.json',encoding='utf-8') as d:       ##### about_01.json##################
+            test = json.load(d)
+        line_bot_api.reply_message(
+        event.reply_token,FlexSendMessage('中原動服社',test)
         )  
+
+    # if event.message.text == '所有狗狗介紹':
+    #     line_bot_api.reply_message(
+    #         event.reply_token,
+    #         carousel_template1
+    #     )
 
     # elif event.message.text == '關於中原動服社':    
     #     line_bot_api.reply_message(
@@ -83,26 +83,27 @@ def handle_message(event):
     #         carousel_template2
     #     )     
 
-    elif event.message.text == '猜猜什麼狗':
-        # message = TemplateSendMessage(
-        #     alt_text='Buttons template',
-        #     template=ButtonsTemplate(
-        #         thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
-        #         # imageBackgroundColor = "#deffe5",
-        #         title='選擇一個動作',
-        #         text='操作說明：使用者可透過相機拍照或從相簿選取照片，傳送至系統進行辨識。',
-        #         actions=[
-        #             URITemplateAction(
-        #                 label='開啟相機',
-        #                 uri='line://nv/camera/'
-        #             ),
-        #             URITemplateAction(
-        #                 label='選取相片',
-        #                 uri='line://nv/cameraRoll/single'
-        #             )
-        #         ]
-        #     )
-        # )
+    # elif event.message.text == '這隻狗叫什麼名字':
+    #     message = TemplateSendMessage(
+    #         alt_text='Buttons template',
+    #         template=ButtonsTemplate(
+    #             thumbnail_image_url='https://imgur.com/FtPiVGL.jpg',#可改
+    #             # imageBackgroundColor = "#deffe5",
+    #             title='選擇一個動作',
+    #             text='操作說明：使用者可透過相機拍照或從相簿選取照片，傳送至系統進行辨識。',
+    #             actions=[
+    #                 URITemplateAction(
+    #                     label='開啟相機',
+    #                     uri='line://nv/camera/'
+    #                 ),
+    #                 URITemplateAction(
+    #                     label='選取相片',
+    #                     uri='line://nv/cameraRoll/single'
+    #                 )
+    #             ]
+    #         )
+    #     )
+    elif event.message.text == '這隻狗叫什麼名字':    
         message=TextSendMessage(
             text="操作說明：\
                                                 請從下面按鈕選擇開啟相機拍照或從相簿選取照片，傳送至系統進行辨識",
@@ -122,9 +123,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, message)
         except LineBotApiError as e:
             print('發生 LineBotApiError: ', e)
-
-
-
 
 #大概運作流程=>
 #-> 當bot接收到圖片
@@ -212,6 +210,7 @@ def upload_image_to_imgur(image_path):
         else:
             return None
 #--------------------------------------------------------------------------------------
+
 
 
 #--移動圖test (Carousel template message)      ##########所有狗狗介紹#####################
@@ -373,7 +372,7 @@ carousel_template2 = TemplateSendMessage(
             CarouselColumn(
                 thumbnail_image_url='https://imgur.com/bd8QZkd.jpg',
                 title='PCT好侶',
-                text='PCT好侶與學生社團長期合作，希望能將盡一份心力，減輕學生們的負擔，讓他們能有更多的時間幫助毛孩子們。',
+                text='PCT好侶與學生社團長期合作，希望能盡一份心力，減輕學生們的負擔，讓他們能有更多的時間幫助毛孩子們。',
                 actions=[
                     URIAction(label='前往PCT好侶', uri='https://www.perfectcompanion.com.tw/tw/news/charity/67'),
                     URIAction(label='連結2', uri='https://linkfly.to/30906q4vJGW')
