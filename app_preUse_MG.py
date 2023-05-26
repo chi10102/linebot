@@ -13,7 +13,7 @@ import shutil
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, URITemplateAction, CarouselTemplate, CarouselColumn, URIAction, FlexSendMessage, CameraAction, CameraRollAction, QuickReply,
-    QuickReplyButton)
+    QuickReplyButton, PostbackAction)
 from linebot.exceptions import LineBotApiError
 
 #我把資料都寫在env.json裡 記得進去裡面修改成自己要套用的Linebot API
@@ -63,18 +63,25 @@ def handle_message(event):
             carousel_template1
         )
 
-    elif event.message.text == '哈囉':
-        with open('test.json') as d:
+        # with open('about_01.json',encoding='utf-8') as d:     ### 暫定all dogs.json##################
+        #     test = json.load(d)
+        # line_bot_api.reply_message(
+        # event.reply_token,FlexSendMessage('hello',test)
+        # )
+        
+
+    elif event.message.text == '關於中原動服社':
+        with open('about_01.json',encoding='utf-8') as d:
             test = json.load(d)
         line_bot_api.reply_message(
         event.reply_token,FlexSendMessage('hello',test)
         )  
 
-    elif event.message.text == '關於中原動服社':    
-        line_bot_api.reply_message(
-            event.reply_token,
-            carousel_template2
-        )     
+    # elif event.message.text == '關於中原動服社':    
+    #     line_bot_api.reply_message(
+    #         event.reply_token,
+    #         carousel_template2
+    #     )     
 
     elif event.message.text == '猜猜什麼狗':
         # message = TemplateSendMessage(
@@ -97,7 +104,8 @@ def handle_message(event):
         #     )
         # )
         message=TextSendMessage(
-            text="操作說明：請從下面按鈕選擇開啟相機拍照或從相簿選取照片，傳送至系統進行辨識。",
+            text="操作說明：\
+                                                請從下面按鈕選擇開啟相機拍照或從相簿選取照片，傳送至系統進行辨識",
             quick_reply=QuickReply(
                 items=[                    
                     QuickReplyButton(
@@ -106,6 +114,7 @@ def handle_message(event):
                     QuickReplyButton(
                         action=CameraRollAction(label="相簿")
                         )
+                        
                 ]
             )
         )
@@ -205,7 +214,7 @@ def upload_image_to_imgur(image_path):
 #--------------------------------------------------------------------------------------
 
 
-#--移動圖test (Carousel template message)      #################所有狗狗介紹#####################
+#--移動圖test (Carousel template message)      ##########所有狗狗介紹#####################
 carousel_template1 = TemplateSendMessage(
     alt_text='Carousel Template 1',
     template=CarouselTemplate(
@@ -320,7 +329,7 @@ carousel_template1 = TemplateSendMessage(
 )
    
 
-                                              ###########關於我們(FB/IG/蝦皮...)##################      
+                                              ##########關於我們(FB/IG/蝦皮...)##################      
 carousel_template2 = TemplateSendMessage(
     alt_text='Carousel Template 2',
     template=CarouselTemplate(
