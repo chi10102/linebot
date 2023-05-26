@@ -1,0 +1,351 @@
+{
+  "type": "carousel",
+  "contents": [
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/Z3R97BG.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Facebook",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true,
+                "text": "一群愛動物、想為流浪動物盡一份心力的大學生們所組成的社團。"
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "前往動服社的FB",
+              "uri": "https://www.facebook.com/cycucatdog/?locale=zh_TW"
+            },
+            "style": "primary",
+            "color": "#222a8f"
+          }
+        ]
+      },
+    "size": "kilo"
+    },
+
+    
+    {                                      
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/V2hhTIw.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Instagram",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true,
+                "text": "社團狗狗日常分享、社團及志工活動訊息。可愛的社團狗狗開放認養中，若發現需要幫助的動物請盡速與我們聯絡。"
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "前往動服社的IG",
+              "uri": "https://www.instagram.com/cycucatdog"
+            },
+            "style": "primary",
+            "color": "#891e8f"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/SCVGhYa.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "最新活動",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "歡迎社員們踴躍參加，到前線為動保議題付出，和我們一起在校內照顧狗狗，非社員也隨時歡迎入社～快行動起來吧！",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "活動公告",
+              "uri": "https://www.instagram.com/p/CrsI9bsLjaM"
+            },
+            "style": "primary",
+            "color": "#bf1313"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "活動表單",
+              "uri": "https://linkfly.to/30906q4vJGW"
+            },
+            "style": "primary",
+            "color": "#bf1313"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/fWUI7WQ.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "蝦皮賣場",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true,
+                "text": "本義賣商品之所得將全額分配至中原大學內每隻浪浪的食、藥支出，謝謝您們的愛心。"
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "前往義賣區",
+              "uri": "https://shopee.tw/enily871127"
+            },
+            "style": "primary",
+            "color": "#f2703d"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/bd8QZkd.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "PCT好侶",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true,
+                "text": "PCT好侶與學生社團長期合作，希望能將盡一份心力，減輕學生們的負擔，讓他們能有更多的時間幫助毛孩子們。"
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "前往PCT好侶",
+              "uri": "https://www.perfectcompanion.com.tw/tw/news/charity/67"
+            },
+            "style": "primary",
+            "color": "#151673"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/9CbPvBl.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "社團法人台灣之心愛護動物協會",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "size": "sm",
+                "flex": 0,
+                "wrap": true,
+                "text": "您也想要帶流浪貓狗去結紮嗎？請來電協會申請，即可完成紮浪浪計畫的申請手續、馬上使用本計畫的補助名額喔！"
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "前往台灣之心愛護動物協會",
+              "uri": "https://hotac.org.tw/content-tnr_projectJoin"
+            },
+            "style": "primary",
+            "color": "#61944a"
+          }
+        ]
+      },
+      "size": "kilo"
+    }
+  ]
+}

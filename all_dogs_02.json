@@ -1,0 +1,1011 @@
+{
+  "type": "carousel",
+  "contents": [
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/Yx8WJFz.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "小黑",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：黑颼颼，胖呼呼",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/Yx8WJFz.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "小黑在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+    
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/gKNThaq.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "小熊",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：黑颼颼，尾巴短短",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/gKNThaq.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "小熊在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/h0Q2OJd.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "小斑",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：毛很柔順，走路像螃蟹歪歪的",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/h0Q2OJd.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "小斑在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/0eiVwjb.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Ｑ比",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：耳朵一豎一垂",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/GAEWDKy.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "Ｑ比在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/plSR5h0.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "莎白",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：白襪子，胸前嘴邊有白毛",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/plSR5h0.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "莎白在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/5Ljcrtb.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "土豆",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：柴犬尾巴",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/G2CDzLE.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "土豆在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    },
+
+
+    {                                     
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "2:1",
+        "aspectMode": "cover",
+        "url": "https://imgur.com/URV4oFk.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "樂樂",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "親和力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動力",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/iWKFAIX.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              },
+              {
+                "type": "icon",
+                "size": "md",
+                "url": "https://imgur.com/W1LfU8z.png"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "特徵：臉像麻糬胖嘟嘟，尾巴短短",
+                "size": "sm",
+                "margin": "sm",
+                "flex": 0
+              }
+            ]
+          }
+        ],
+        "margin": "none"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "詳細介紹",
+              "uri": "https://imgur.com/vPykFAz.jpg"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "樂樂在哪裡",
+              "uri": "https://www.google.com/maps/@24.9591687,121.2395784,17z?authuser=0"
+            },
+            "style": "primary",
+            "color": "#c24319"
+          }
+        ]
+      },
+      "size": "kilo"
+    }
+  ]
+}
